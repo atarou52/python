@@ -3,6 +3,10 @@ import sqlite3
 con = sqlite3.connect('diary.db')
 cur = con.cursor()
 
+# 既にDBがある場合は削除してから実行
+cur.execute("DROP TABLE IF EXISTS weather")
+cur.execute("DROP TABLE IF EXISTS action")
+
 cur.execute("""CREATE TABLE weather
             (id INTEGER PRIMARY KEY AUTOINCREMENT,
             type TEXT)""")
